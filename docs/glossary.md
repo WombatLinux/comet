@@ -1,0 +1,13 @@
+# Glossary
+- **Star**: A package in the Comet system.
+- **[package].star**: A Comet package file, also known as a 'starfile'.
+- **Comet**: The package manager used in the Comet system.
+- **repo.yml**: A file defining a Comet package repository, also known as a 'galaxy'.
+- **info.yml**: A file within a Comet package containing metadata about the package.
+- **install**: A script executed during the installation of a Comet package. It is typically a shell script.
+- **remove**: A script executed during the removal of a Comet package. It is typically a shell script.
+- **package**: A directory within a Comet package containing the actual files to be installed.
+- **Constellation**: A collection of related stars (packages) installed together, similar to a desktop environment. Constellations are managed through a starfile with dependencies and may include specific `install` and `remove` scripts for additional setup.
+- **Starfile**: A file containing a Comet package, typically with a `.star` extension.
+- **Galaxy**: A repository hosting multiple stars (packages), typically a website with starfiles and a `repo.yml` file detailing its contents. Each Comet system maintains an internal galaxy `repo.yml` to track installed packages.
+- **cache.yml**: A file storing information about known packages. It is updated with the latest data from galaxy repositories during a `comet update` and used to check dependencies during a `comet install`.
