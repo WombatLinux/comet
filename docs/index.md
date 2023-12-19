@@ -22,4 +22,4 @@ run `comet --help`. Detailed usage documentation is also available in the
 [Comet CLI documentation](../comet-cli/README.md).
 
 ## Contributing
-To contribute, please review the [Contributing](https://github.com/WombatLinux/comet/CONTRIBUTING.md) file.
+To contribute, please review the [Contributing](https://github.com/WombatLinux/comet/blob/main/CONTRIBUTING.md) file.
