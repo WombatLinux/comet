@@ -22,10 +22,10 @@ latest release from the [releases page](https://github.com/wombatlinux/comet/rel
 
 Although the CLI is created as `comet-cli`, it is recommended to create a symlink to `comet` or to rename it for ease of use:
 ```bash
-# Create a symlink
+# Option 1: Create a symlink
 ln -s comet-cli comet
 
-# Rename the file
+# Option 2: Rename the file
 mv comet-cli comet
 ```
 
