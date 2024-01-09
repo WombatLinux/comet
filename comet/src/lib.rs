@@ -11,7 +11,7 @@ use crate::repo::Repository;
 use sha2::{Sha256, Digest};
 
 pub mod package;
-mod repo;
+pub mod repo;
 mod config;
 
 /// Installs a package from a repository or a local file

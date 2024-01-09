@@ -77,7 +77,7 @@ impl Repository {
 
     pub fn from_file(path: String) -> Repository {
         let repository = std::fs::read_to_string(path).unwrap();
-        serde_yaml::from_str(&repository).unwrap()
+        serde_yaml::from_str(&repository).unwrap_or_else(|_| Repository::new(true))
     }
 
     pub fn from_web(url: String) -> Repository {

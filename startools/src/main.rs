@@ -34,6 +34,12 @@ enum Commands {
     New {
         name: String,
     },
+
+    #[command()]
+    UpdateRepo {
+        repo_file: String,
+        package_file: String,
+    }
 }
 
 fn check_package(package: String) -> bool {
@@ -368,6 +374,53 @@ fn main() {
             });
 
             println!("Package created successfully. You can now add the package files to the package directory and build the package with \"startools build {}\"", name);
+        }
+
+        Commands::UpdateRepo {repo_file, package_file } => {
+            // load the repo file
+            let mut repo = comet::repo::Repository::from_file(repo_file.clone());
+
+            // load the package tar file and grab the package file
+            let mut package_tar = tar::Archive::new(std::fs::File::open(package_file.clone()).unwrap_or_else(|err| {
+                println!("Error while opening package file: {}", err);
+                std::process::exit(1);
+            }));
+
+            // package file is called "info.yaml", so filter for that
+
+            let files = package_tar.entries().unwrap_or_else(|e| {
+                println!("Error while reading package file: {}", e);
+                std::process::exit(1);
+            });
+
+            let mut package_file = files.filter("info.yaml").next().unwrap_or_else(|| {
+                println!("Error while reading package file");
+                std::process::exit(1);
+            });
+
+            let mut package_file_contents = String::new();
+
+            let _ = package_file.read_to_string(&mut package_file_contents).unwrap_or_else(|e| {
+                println!("Error while reading package file: {}", e);
+                std::process::exit(1);
+            });
+
+            let mut package = comet::package::Package::from_string(package_file_contents);
+
+            // now run a checksum on the package file and set the checksum field to that
+            let mut hasher = Sha256::new();
+
+            hasher.update(package_file_contents.as_bytes());
+            let checksum = format!("{:x}", hasher.finalize());
+            package.checksum = Some(checksum.clone());
+
+            // now add the package to the repo
+            repo.add_package(package);
+
+            // now write the repo file
+            repo.to_file(repo_file.clone());
+
+            println!("Package added successfully");
         }
     }
 }
