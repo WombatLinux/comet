@@ -2,7 +2,7 @@
 
 Welcome to the repository for the Comet package manager [CLI](comet-cli/README.md) and associated tools. Comet is a 
 next-generation package manager for Linux, designed with speed, ease of use, and stability in mind. Built on top of the 
-[comet](comet/README.md) library, which is also written in Rust, Comet aims to provide a streamlined package management 
+[libcomet](comet/README.md) library, which is also written in Rust, Comet aims to provide a streamlined package management 
 experience.
 
 ## Features
