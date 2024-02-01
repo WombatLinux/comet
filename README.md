@@ -34,7 +34,8 @@ To build Comet from source, you will need to have the following installed:
 - Rust (stable)
 - Cargo
 - Git
-- C compiler (GCC or Clang)
+- C compiler (GCC or Clang recommended)
+- `libssl`
 
 To build Comet, run the following commands:
 ```bash
