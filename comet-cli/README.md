@@ -17,7 +17,8 @@ To build Comet from source, you will need the following:
 - Cargo 1.51 or newer
 - Git
 - A C compiler (GCC, Clang, etc.)
-- Your OS's development tools (build-essential on Ubuntu, base-devel on Arch, etc.) for building comet
+- Your OS's development tools (`build-essential` on Debian/Ubuntu, `base-devel` on Arch, etc.) for building comet
+- `libssl`
 
 ### Building
 To build Comet from source, run the following commands:
